@@ -1,0 +1,61 @@
+# Supabase local development configuration
+
+[project]
+# Ref ID generated when linking to Supabase, will be overwritten if you use `supabase link`
+# ref = ""
+
+# Project ID to use for migrations and CLI commands
+# id = ""
+
+[api]
+# Port to use for the API URL.
+port = 54321
+# Schemas to expose in your API. Tables, views and stored procedures in this schema will get API endpoints.
+schemas = ["public", "storage", "graphql_public"]
+# Extra schemas to add to the search_path of every request. `public` is always included.
+extra_search_path = ["public", "extensions"]
+# The maximum number of rows returns from a view, other filters may increase this limit.
+max_rows = 1000
+
+[db]
+# Port to use for the local database URL.
+port = 54322
+# The database major version to use. This has to be the same as the upstream database used on Supabase. Write migrations to src/migrations folder.
+major_version = 15
+
+[studio]
+# The port for Supabase Studio.
+port = 54323
+
+[inbucket]
+# The port for the email testing server. Inbucket provides SMTP and a web interface to test email integrations during local development.
+port = 54324
+# If enabled, emails are not actually sent but displayed in the web interface.
+enabled = true
+
+[storage]
+# The max file size allowed (e.g. "5MB", "500KB").
+file_size_limit = "50MiB"
+
+[auth]
+# The maximum number of seconds a session can last for.
+max_session_duration = 604800
+# How long tokens are valid for, in seconds.
+jwt_expiry = 3600
+# If disabled, the refresh token will never expire.
+enable_refresh_token_rotation = true
+# Allows refreshing the JWT token without using the refresh token.
+refresh_token_reuse_interval = 10
+# Allow/disallow new user signups.
+enable_signup = true
+
+[functions]
+# The memory limit for Node.js functions.
+memory_limit = 256
+
+[realtime]
+# Listen tools starts the Realtime server by default.
+# Set `enabled` to false if you want to disable the Realtime server.
+enabled = true
+# The maximum number of concurrent connections allowed.
+max_concurrent_users = 1000
